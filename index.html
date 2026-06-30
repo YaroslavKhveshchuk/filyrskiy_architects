@@ -5,6 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Filyrskiy Architects — Дизайн та ремонт під ключ</title>
     <meta name="description" content="Filyrskiy Architects — студія архітектури та дизайну інтер'єру. Повна реалізація об'єктів під ключ. 9 років досвіду, 400+ реалізованих об'єктів.">
+    <link rel="preload" as="image" href="img/general/44.jpg">
+    <link rel="preload" as="image" href="img/general/20.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -111,7 +113,7 @@
 <body>
 
 <!-- ===== HEADER ===== -->
-<header id="header" class="fixed top-0 left-0 w-full z-50 transition-all duration-500">
+<header id="header" class="lg:fixed top-0 left-0 w-full z-50 transition-all duration-500">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex items-center justify-between h-20">
             <!-- Logo -->
@@ -199,7 +201,7 @@
 </div>
 
 <!-- ===== HERO SECTION ===== -->
-<section id="hero" class="relative min-h-screen flex items-center hero-gradient pt-20">
+<section id="hero" class="relative min-h-screen flex items-center hero-gradient pt-0 lg:pt-20">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full">
         <div class="grid lg:grid-cols-2 gap-6 sm:gap-8 lg:gap-12 xl:gap-16 items-center">
             <!-- Left -->
@@ -240,18 +242,18 @@
                 <div class="grid grid-cols-2 gap-4">
                     <div class="space-y-4">
                         <div class="overflow-hidden rounded-sm aspect-[3/4]">
-                            <img src="img/general/44.jpg" alt="Проєкт 1" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <img src="img/general/44.jpg" alt="Проєкт 1" width="600" height="800" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="eager" fetchpriority="high">
                         </div>
                         <div class="overflow-hidden rounded-sm aspect-square">
-                            <img src="img/general/20.jpg" alt="Проєкт 2" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <img src="img/general/20.jpg" alt="Проєкт 2" width="600" height="600" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="eager">
                         </div>
                     </div>
                     <div class="space-y-4 pt-8">
                         <div class="overflow-hidden rounded-sm aspect-square">
-                            <img src="img/general/28.jpg" alt="Проєкт 3" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <img src="img/general/28.jpg" alt="Проєкт 3" width="600" height="600" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="eager">
                         </div>
                         <div class="overflow-hidden rounded-sm aspect-[3/4]">
-                            <img src="img/general/28 (2).jpg" alt="Проєкт 4" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="lazy">
+                            <img src="img/general/28 (2).jpg" alt="Проєкт 4" width="600" height="800" class="w-full h-full object-cover hover:scale-105 transition-transform duration-700" loading="eager">
                         </div>
                     </div>
                 </div>
@@ -849,6 +851,7 @@
     const header = document.getElementById('header');
     let lastScroll = 0;
     window.addEventListener('scroll', function() {
+        if (window.innerWidth < 1024) return;
         const currentScroll = window.pageYOffset;
         if (currentScroll > 50) {
             header.classList.add('glass-strong');
