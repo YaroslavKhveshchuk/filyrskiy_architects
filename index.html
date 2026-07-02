@@ -1058,7 +1058,7 @@
         var pricePerM2 = 1400;
         if (typeInput) {
             if (typeInput.value === 'construction') pricePerM2 = 22000;
-            else if (typeInput.value === 'full') pricePerM2 = 30000;
+            else if (typeInput.value === 'full') pricePerM2 = 60000;
         }
         var price = Math.round(val * pricePerM2 / 1000) * 1000;
         document.getElementById('priceEstimate').textContent = '~' + price.toLocaleString('uk-UA') + ' ₴';
