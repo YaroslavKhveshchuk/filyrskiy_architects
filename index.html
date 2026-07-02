@@ -8,9 +8,15 @@
     <link rel="preload" as="image" href="img/general/44.jpg">
     <link rel="preload" as="image" href="img/general/20.jpg">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Jost:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        @font-face {
+            font-family: 'Century Gothic';
+            src: url('font/Century_Gothic.ttf') format('truetype');
+            font-weight: normal;
+            font-style: normal;
+            font-display: swap;
+        }
+    </style>
     <script>
         tailwind.config = {
             theme: {
@@ -24,8 +30,8 @@
                         faSlate: '#111111',
                     },
                     fontFamily: {
-                        serif: ['Playfair Display', 'Georgia', 'serif'],
-                        sans: ['Jost', 'system-ui', 'sans-serif'],
+                        serif: ['Century Gothic', 'sans-serif'],
+                        sans: ['Century Gothic', 'sans-serif'],
                     },
                 }
             }
@@ -34,7 +40,7 @@
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         html { scroll-behavior: smooth; }
-        body { font-family: 'Jost', sans-serif; background: #000000; color: #FFFFFF; overflow-x: hidden; }
+        body { font-family: 'Century Gothic', sans-serif; background: #000000; color: #FFFFFF; overflow-x: hidden; }
 
         .glow-gold { box-shadow: 0 0 20px rgba(212,175,55,0.3), 0 0 40px rgba(212,175,55,0.1); }
         .glow-gold-subtle { box-shadow: 0 0 15px rgba(212,175,55,0.15); }
@@ -108,6 +114,17 @@
         ::-webkit-scrollbar-track { background: #000000; }
         ::-webkit-scrollbar-thumb { background: #FFFFFF; border-radius: 3px; }
         ::-webkit-scrollbar-thumb:hover { background: #FFFFFF; }
+
+        .scrollbar-hide::-webkit-scrollbar { display: none; }
+        .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+
+        #galleryThumbs::-webkit-scrollbar { height: 4px; }
+        #galleryThumbs::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); }
+        #galleryThumbs::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.2); border-radius: 2px; }
+
+        .gallery-thumb { width: 56px; height: 56px; flex-shrink: 0; border: 2px solid transparent; opacity: 0.4; transition: all 0.2s ease; cursor: pointer; }
+        .gallery-thumb:hover { opacity: 0.7; }
+        .gallery-thumb.active { border-color: #FFFFFF; opacity: 1; }
     </style>
 </head>
 <body>
@@ -341,7 +358,7 @@
         </div>
         <!-- Grid -->
         <div id="portfolioGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="interior">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="interior" data-gallery="ЖК Печерськ Плаза квартира">
                 <img src="img/ourprojects/ЖК Печерськ Плаза квартира 155 м2.jpg" alt="ЖК Печерськ Плаза" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Інтер'єр</span>
@@ -349,7 +366,7 @@
                     <p class="text-white/50 text-sm font-light">155 м² · Квартира</p>
                 </div>
             </div>
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="interior">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="interior" data-gallery="ЖК Новопечерські липки Квартира">
                 <img src="img/ourprojects/ЖК Новопечерські Липки 171 м2 Квартира.jpg" alt="ЖК Новопечерські Липки Квартира" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Інтер'єр</span>
@@ -357,7 +374,7 @@
                     <p class="text-white/50 text-sm font-light">171 м² · Квартира</p>
                 </div>
             </div>
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="commercial">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="commercial" data-gallery="ЖК Новопечерські Липки Офіс">
                 <img src="img/ourprojects/ЖК Новопечерсські Липки 170 м2 Офіс.jpg" alt="ЖК Новопечерські Липки Офіс" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Комерційний</span>
@@ -365,7 +382,7 @@
                     <p class="text-white/50 text-sm font-light">170 м² · Офіс</p>
                 </div>
             </div>
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="interior">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="interior" data-gallery="ЖК Новий Автограф">
                 <img src="img/ourprojects/ЖК Новий Автограф 77 м2.jpg" alt="ЖК Новий Автограф" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Інтер'єр</span>
@@ -373,15 +390,15 @@
                     <p class="text-white/50 text-sm font-light">77 м² · Квартира</p>
                 </div>
             </div>
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="interior">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="interior" data-gallery="ЖК Гранд Бурже">
                 <img src="img/ourprojects/ЖК Гранд Бурже 73 м2.jpg" alt="ЖК Гранд Бурже" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Інтер'єр</span>
                     <h4 class="font-serif text-xl text-white mb-1">ЖК Гранд Бурже</h4>
-                    <p class="text-white/50 text-sm font-light">73 м² · Квартира</p>
+                    <p class="text-white/50 text-sm font-light">77 м² · Квартира</p>
                 </div>
             </div>
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="interior">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="interior" data-gallery="ЖК Great">
                 <img src="img/ourprojects/ЖК Great 84 м2.jpg" alt="ЖК Great" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Інтер'єр</span>
@@ -389,7 +406,7 @@
                     <p class="text-white/50 text-sm font-light">84 м² · Квартира</p>
                 </div>
             </div>
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="interior">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="interior" data-gallery="ЖК Сирецькі Сади">
                 <img src="img/ourprojects/ЖК Сирецькі Сади 91 м2.jpg" alt="ЖК Сирецькі Сади" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Інтер'єр</span>
@@ -397,7 +414,7 @@
                     <p class="text-white/50 text-sm font-light">91 м² · Квартира</p>
                 </div>
             </div>
-            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5]" data-category="commercial">
+            <div class="portfolio-card group relative overflow-hidden rounded-sm aspect-[4/5] cursor-pointer" data-category="commercial" data-gallery="Ресторан">
                 <img src="img/cases/Ресторан 141 м2.jpg" alt="ЕОН Ресторан" class="w-full h-full object-cover" loading="lazy">
                 <div class="card-overlay absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent flex flex-col justify-end p-6">
                     <span class="text-faGold text-xs uppercase tracking-widest mb-2">Комерційний</span>
@@ -524,6 +541,29 @@
         <button onclick="closeCaseModal()" class="absolute top-4 right-4 text-white/40 hover:text-white transition-colors text-2xl z-10">&times;</button>
         <div id="caseModalContent"></div>
     </div>
+</div>
+
+<!-- ===== GALLERY MODAL ===== -->
+<div id="galleryModal" class="fixed inset-0 z-[60] bg-black/95 opacity-0 pointer-events-none transition-opacity duration-300 flex flex-col">
+    <div class="flex items-center justify-between px-4 sm:px-6 py-4 flex-shrink-0">
+        <h3 id="galleryTitle" class="font-serif text-lg sm:text-xl text-white truncate"></h3>
+        <div class="flex items-center gap-4">
+            <span id="galleryCounter" class="text-white/40 text-sm"></span>
+            <button onclick="closeGallery()" class="text-white/40 hover:text-white transition-colors text-2xl leading-none">&times;</button>
+        </div>
+    </div>
+    <div class="flex-1 flex items-center justify-center px-4 sm:px-12 pb-4 min-h-0">
+        <button onclick="galleryPrev()" class="absolute left-2 sm:left-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 border border-white/20 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all z-10 bg-black/30 backdrop-blur-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+        </button>
+        <div id="galleryImageWrap" class="max-w-full max-h-full flex items-center justify-center">
+            <img id="galleryImage" src="" alt="" class="max-w-full max-h-[75vh] object-contain select-none">
+        </div>
+        <button onclick="galleryNext()" class="absolute right-2 sm:right-4 top-1/2 -translate-y-1/2 w-10 h-10 sm:w-12 sm:h-12 border border-white/20 rounded-full flex items-center justify-center text-white/60 hover:text-white hover:border-white/50 transition-all z-10 bg-black/30 backdrop-blur-sm">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/></svg>
+        </button>
+    </div>
+    <div id="galleryThumbs" class="flex gap-2 px-4 sm:px-6 pb-4 overflow-x-auto flex-shrink-0 scrollbar-hide"></div>
 </div>
 
 <!-- ===== TRUST / ABOUT ===== -->
@@ -812,12 +852,12 @@
                     <!-- Map mockup -->
                     <div class="absolute inset-0 flex items-center justify-center">
                         <div class="text-center">
-                            <div class="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-4 pulse-glow">
-                                <svg class="w-7 h-7 text-faGold" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
+                            <div class="w-16 h-16 border border-white/10 rounded-full flex items-center justify-center mx-auto mb-4">
+                                <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/></svg>
                             </div>
                             <p class="font-serif text-white text-lg mb-1">Pechersk Plaza</p>
                             <p class="text-white/40 text-sm font-light">вул. Леоніда Первомайського, Київ</p>
-                            <div class="mt-6 w-48 h-px bg-gradient-to-r from-transparent via-faGold/30 to-transparent mx-auto"></div>
+                            <div class="mt-6 w-48 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent mx-auto"></div>
                         </div>
                     </div>
                     <!-- Grid lines for map effect -->
@@ -1014,7 +1054,7 @@
 
     window.updateArea = function(val) {
         document.getElementById('areaDisplay').textContent = val;
-        var price = Math.round(val * 4500 / 1000) * 1000;
+        var price = Math.round(val * 1400 / 1000) * 1000;
         document.getElementById('priceEstimate').textContent = '~' + price.toLocaleString('uk-UA') + ' ₴';
 
         var months;
@@ -1124,6 +1164,115 @@ caseModal.addEventListener('click', function(e) {
 
 document.addEventListener('keydown', function(e) {
     if (e.key === 'Escape') closeCaseModal();
+});
+
+// ===== GALLERY =====
+var galleryModal = document.getElementById('galleryModal');
+var galleryImage = document.getElementById('galleryImage');
+var galleryTitle = document.getElementById('galleryTitle');
+var galleryCounter = document.getElementById('galleryCounter');
+var galleryThumbs = document.getElementById('galleryThumbs');
+var galleryImages = [];
+var galleryIndex = 0;
+var galleryFolder = '';
+
+function openGallery(folder, title) {
+    galleryFolder = folder;
+    galleryTitle.textContent = title;
+    galleryImages = [];
+    galleryIndex = 0;
+    galleryThumbs.innerHTML = '';
+
+    var basePath = 'img/ourprojects/gallery/' + folder + '/';
+    var loaded = 0;
+    var total = 50;
+
+    for (var i = 1; i <= total; i++) {
+        (function(num) {
+            var img = new Image();
+            var numStr = num < 10 ? '0' + num : '' + num;
+            img.onload = function() {
+                galleryImages.push({ src: basePath + numStr + '.jpg', num: num });
+                galleryImages.sort(function(a, b) { return a.num - b.num; });
+                loaded++;
+                if (loaded === 1 && galleryImages.length > 0) {
+                    showGalleryImage(0);
+                }
+                updateThumbs();
+            };
+            img.onerror = function() {};
+            img.src = basePath + numStr + '.jpg';
+        })(i);
+    }
+
+    galleryModal.style.opacity = '1';
+    galleryModal.style.pointerEvents = 'all';
+    document.body.style.overflow = 'hidden';
+}
+
+function showGalleryImage(idx) {
+    if (galleryImages.length === 0) return;
+    galleryIndex = idx;
+    galleryImage.src = galleryImages[idx].src;
+    galleryImage.alt = galleryTitle.textContent + ' ' + (idx + 1);
+    galleryCounter.textContent = (idx + 1) + ' / ' + galleryImages.length;
+    updateThumbs();
+}
+
+function galleryNext() {
+    if (galleryImages.length === 0) return;
+    showGalleryImage((galleryIndex + 1) % galleryImages.length);
+}
+
+function galleryPrev() {
+    if (galleryImages.length === 0) return;
+    showGalleryImage((galleryIndex - 1 + galleryImages.length) % galleryImages.length);
+}
+
+function updateThumbs() {
+    galleryThumbs.innerHTML = '';
+    for (var i = 0; i < galleryImages.length; i++) {
+        var thumb = document.createElement('img');
+        thumb.src = galleryImages[i].src;
+        thumb.className = 'gallery-thumb object-cover' + (i === galleryIndex ? ' active' : '');
+        thumb.setAttribute('data-idx', i);
+        thumb.addEventListener('click', function() {
+            showGalleryImage(parseInt(this.getAttribute('data-idx')));
+        });
+        galleryThumbs.appendChild(thumb);
+    }
+    var activeThumb = galleryThumbs.querySelector('.active');
+    if (activeThumb) {
+        activeThumb.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+    }
+}
+
+function closeGallery() {
+    galleryModal.style.opacity = '0';
+    galleryModal.style.pointerEvents = 'none';
+    document.body.style.overflow = '';
+    galleryImages = [];
+}
+
+galleryModal.addEventListener('click', function(e) {
+    if (e.target === galleryModal || e.target === document.getElementById('galleryImageWrap')) {
+        closeGallery();
+    }
+});
+
+document.addEventListener('keydown', function(e) {
+    if (galleryModal.style.opacity !== '1') return;
+    if (e.key === 'Escape') closeGallery();
+    if (e.key === 'ArrowRight') galleryNext();
+    if (e.key === 'ArrowLeft') galleryPrev();
+});
+
+document.querySelectorAll('.portfolio-card[data-gallery]').forEach(function(card) {
+    card.addEventListener('click', function() {
+        var folder = this.getAttribute('data-gallery');
+        var title = this.querySelector('h4').textContent;
+        openGallery(folder, title);
+    });
 });
 </script>
 </body>
